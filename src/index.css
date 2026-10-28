@@ -90,11 +90,12 @@ body {
   background: var(--bg-base);
   color: var(--text-primary);
   overflow-x: hidden;
-  cursor: none;
+  cursor: default;
   line-height: 1.6;
 }
-a { text-decoration: none; color: inherit; }
+a { text-decoration: none; color: inherit; cursor: pointer; }
 button { cursor: pointer; font-family: inherit; }
+input, textarea, select { cursor: text; }
 img { display: block; max-width: 100%; }
 ul { list-style: none; }
 
@@ -104,23 +105,27 @@ ul { list-style: none; }
 ::-webkit-scrollbar-thumb { background: var(--violet); border-radius: 3px; }
 
 /* ========================
-   CUSTOM CURSOR
+   CUSTOM CURSOR (TOPMOST Z-INDEX)
 ======================== */
 .cursor-dot {
-  position: fixed; pointer-events: none; z-index: 99999;
+  position: fixed; pointer-events: none; z-index: 2147483647;
   width: 8px; height: 8px; border-radius: 50%;
-  background: var(--gold); mix-blend-mode: normal;
-  transition: transform 0.1s, background 0.2s;
-  box-shadow: 0 0 12px rgba(245,158,11,0.8);
+  background: var(--cyan); mix-blend-mode: normal;
+  transition: transform 0.1s, background 0.2s, opacity 0.2s;
+  box-shadow: 0 0 14px rgba(0, 242, 254, 0.95);
 }
 .cursor-ring {
-  position: fixed; pointer-events: none; z-index: 99998;
+  position: fixed; pointer-events: none; z-index: 2147483646;
   width: 36px; height: 36px; border-radius: 50%;
-  border: 1.5px solid rgba(124,58,237,0.6);
-  transition: transform 0.15s var(--ease-out), width 0.3s, height 0.3s, border-color 0.3s;
+  border: 1.5px solid rgba(0, 242, 254, 0.75);
+  box-shadow: 0 0 16px rgba(139, 92, 246, 0.4);
+  transition: transform 0.15s var(--ease-out), width 0.25s, height 0.25s, border-color 0.25s, opacity 0.2s;
 }
-.cursor-dot.hover { transform: scale(3); background: var(--violet); }
-.cursor-ring.hover { width: 56px; height: 56px; border-color: rgba(245,158,11,0.7); }
+.cursor-dot.hover { transform: scale(2.6); background: var(--violet); box-shadow: 0 0 16px rgba(139, 92, 246, 0.95); }
+.cursor-ring.hover { width: 52px; height: 52px; border-color: rgba(236, 72, 153, 0.85); box-shadow: 0 0 20px rgba(236, 72, 153, 0.4); }
+.cursor-dot.input-mode { opacity: 0.5; background: var(--gold); }
+.cursor-ring.input-mode { width: 22px; height: 22px; border-color: rgba(245, 158, 11, 0.6); }
+.cursor-dot.hidden, .cursor-ring.hidden { opacity: 0; }
 
 /* ========================
    LOADING (NAME LOGO ONLY)
@@ -1132,6 +1137,7 @@ ul { list-style: none; }
   justify-content: center;
   padding: 1.5rem;
   overflow-y: auto;
+  cursor: default;
 }
 .modal-card {
   position: relative;
@@ -1144,6 +1150,20 @@ ul { list-style: none; }
   overflow: hidden;
   max-height: 90vh;
   overflow-y: auto;
+  cursor: default;
+}
+.modal-card input,
+.modal-card textarea,
+.modal-card select {
+  cursor: text !important;
+}
+.modal-card button,
+.modal-card a,
+.modal-card [role="button"],
+.modal-card .auth-tab-btn,
+.modal-card .region-btn,
+.modal-card .form-submit-btn {
+  cursor: pointer !important;
 }
 .modal-close-btn {
   position: absolute;
