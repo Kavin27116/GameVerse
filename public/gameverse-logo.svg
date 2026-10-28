@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120" fill="none" role="img" aria-label="Gameverse">
+  <title>Gameverse</title>
+  <defs>
+    <linearGradient id="gvGradient" x1="16" y1="18" x2="104" y2="102" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#00F2FE" />
+      <stop offset=".5" stop-color="#8B5CF6" />
+      <stop offset="1" stop-color="#EC4899" />
+    </linearGradient>
+  </defs>
+  <!-- Portal ring with an opening at the top right -->
+  <path d="M99.73 38.87A45 45 0 1 1 81.13 20.27" stroke="url(#gvGradient)" stroke-width="12" stroke-linecap="round" />
+  <!-- Play glyph at the centre -->
+  <path d="M39 34v52l48-26z" fill="url(#gvGradient)" stroke="url(#gvGradient)" stroke-width="8" stroke-linejoin="round" />
+</svg>
